@@ -1,0 +1,1392 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "ejercicios.ipynb",
+      "provenance": [],
+      "toc_visible": true,
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/CarlosRochaA/codes-python-/blob/main/Clase%204\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "C1RZEm1RAlRE"
+      },
+      "source": [
+        "# Clase 1 - Tipos de datos"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "idIpJPg1A_Cs"
+      },
+      "source": [
+        "### 1- Cambiar un texto\n",
+        "Necesitamos mostrar en nuestra web la sinopsis de las películas. El problema es que tenemos los textos separados por pipes (\"|\") en lugar de saltos de línea."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "F8n12VmJBAMc"
+      },
+      "source": [
+        "string = 'Sinopsis | Marty McFly, un típico adolescente americano de los años ochenta, '\\\n",
+        "'es accidentalmente enviado de vuelta a 1955 en una \"máquina del tiempo\" realizada con'\\\n",
+        "'un DeLorean inventada por un científico un poco loco. | En este viaje, Marty debe '\\\n",
+        "'asegurarse de que sus padres se encuentren y se enamoren, para que pueda volver a su tiempo. '"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "qHm99oJeBRAY",
+        "outputId": "97f05b7a-a24e-46cf-e948-b32f64856c89"
+      },
+      "source": [
+        "print(string)"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Sinopsis | Marty McFly, un típico adolescente americano de los años ochenta, es accidentalmente enviado de vuelta a 1955 en una \"máquina del tiempo\" realizada conun DeLorean inventada por un científico un poco loco. | En este viaje, Marty debe asegurarse de que sus padres se encuentren y se enamoren, para que pueda volver a su tiempo. \n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "UV9Hoov9BTd6"
+      },
+      "source": [
+        "¿Cómo podríamos hacer para que la función \"print\" muestre saltos de línea en lugar de pipes?"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "vPEkpaBaBUye",
+        "outputId": "f1b6275f-e076-4ec5-cfc1-4d3988108965"
+      },
+      "source": [
+        "string = string.replace('|', '\\n')\n",
+        "print(string)"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Sinopsis \n",
+            " Marty McFly, un típico adolescente americano de los años ochenta, es accidentalmente enviado de vuelta a 1955 en una \"máquina del tiempo\" realizada conun DeLorean inventada por un científico un poco loco. \n",
+            " En este viaje, Marty debe asegurarse de que sus padres se encuentren y se enamoren, para que pueda volver a su tiempo. \n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "S7cOGm4UBhi6"
+      },
+      "source": [
+        "### 2 - Crear un acrónimo\n",
+        "\n",
+        "Ahora nos piden crear un acrónimo (una palabra compuesta por la primera letra de cada palabra) de cada título. Pero antes de eso es necesario que transformemos los títulos a \"title case\" porque no todos van a llegar prolijos. Entonces, el acrónimo de \"Volver al futuro\" debería ser \"VAF\". "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "EPaCFYcMB1LY"
+      },
+      "source": [
+        "titulo = 'Volver al futuro'"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "O352TLH2B3Cd",
+        "outputId": "6ac96797-db5f-4f68-e5f0-1fcfc6b37833"
+      },
+      "source": [
+        "acronimo = ''\n",
+        "titulo_lista = titulo.title().split()\n",
+        "for palabra in titulo_lista:\n",
+        "  acronimo = acronimo + palabra[0]\n",
+        "print(acronimo)"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "VAF\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "P52-HQyIWpqA"
+      },
+      "source": [
+        "# Clase 2 - Errores y funciones"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "NYhKyYTnWuTf"
+      },
+      "source": [
+        "## El contador de palabras\n",
+        "\n",
+        "Una revista científica quiere publicar los abstracts de los trabajos que aprobó recientemente pero primero tiene que asegurarse de que ninguno de los abstracts tenga más de 200 palabras. \n",
+        "\n",
+        "Para interactuar con los archivos que tenemos en nuestro \"file system\" vamos a utilizar el módulo os. No se preocupen por entender todos los detalles ahora, vamos a ir profundizando en la utilización de módulos. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "UO3fPsseW-xO",
+        "outputId": "190fb33f-4304-4c71-f261-788bd56843c4"
+      },
+      "source": [
+        "!wget https://datasets-humai.s3.amazonaws.com/datasets/publicaciones.zip"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "--2021-04-12 18:33:53--  https://datasets-humai.s3.amazonaws.com/datasets/publicaciones.zip\n",
+            "Resolving datasets-humai.s3.amazonaws.com (datasets-humai.s3.amazonaws.com)... 52.216.21.35\n",
+            "Connecting to datasets-humai.s3.amazonaws.com (datasets-humai.s3.amazonaws.com)|52.216.21.35|:443... connected.\n",
+            "HTTP request sent, awaiting response... 200 OK\n",
+            "Length: 4342 (4.2K) [application/zip]\n",
+            "Saving to: ‘publicaciones.zip’\n",
+            "\n",
+            "publicaciones.zip   100%[===================>]   4.24K  --.-KB/s    in 0s      \n",
+            "\n",
+            "2021-04-12 18:33:53 (99.3 MB/s) - ‘publicaciones.zip’ saved [4342/4342]\n",
+            "\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "VxdiLX9OYYk4",
+        "outputId": "cfd48d50-4d9b-4fd9-a2d7-206f909d0d74"
+      },
+      "source": [
+        "!unzip publicaciones.zip"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Archive:  publicaciones.zip\n",
+            "   creating: publicaciones/\n",
+            "  inflating: publicaciones/Yukon Delta Salmon Management.txt  \n",
+            "  inflating: publicaciones/The Citrus Solution Phase II.txt  \n",
+            "  inflating: publicaciones/Characterization of Iron Deposition in Recombinant Heteropolymer.txt  \n",
+            "  inflating: publicaciones/Using GIS Site Suitability Analysis to Study Adaptability.txt  \n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "oC83IC5dYfa5"
+      },
+      "source": [
+        "import os "
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "0wQO7BeGYgmR"
+      },
+      "source": [
+        "archivos_directorio = os.listdir('publicaciones')"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "tFRcUPPKYgpF",
+        "outputId": "e06e0252-f5ae-48b2-945d-402703bd2eb6"
+      },
+      "source": [
+        "print(archivos_directorio)"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "['The Citrus Solution Phase II.txt', 'Yukon Delta Salmon Management.txt', 'Characterization of Iron Deposition in Recombinant Heteropolymer.txt', 'Using GIS Site Suitability Analysis to Study Adaptability.txt']\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "t43NF04OYvKs"
+      },
+      "source": [
+        "La función listdir nos devuelve una lista con todos los archivos que están en la carpeta publicaciones. Noten que solamente nos devuelve los nombres de los archivos, no la ruta completa que necesitamos para acceder a los mismos desde la ubicación en el filesystem donde se encuentra esta notebook.\n",
+        "\n",
+        "Las rutas hasta los archivos cambian con el sistema operativo, por eso si están en Windows, la forma de acceder al archivo Yukon Delta Salmon Management.txt es ejercicios\\\\Yukon Delta Salmon Management.txt mientras que si están en Linux o Unix la forma de acceder es ejercicios/Yukon Delta Salmon Management.txt .  Para evitar problemas y que el código sea ejecutable desde cualquier sistema operativo, el módulo os tiene la función os.join.\n",
+        "\n",
+        "Entonces para crear las rutas vamos a usar la función os.path.join y para esto es ideal una lista por comprensión"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "xU07LAb9Y6Xo",
+        "outputId": "bc282ba8-660c-43fa-d4be-c58b8dce84bf"
+      },
+      "source": [
+        "rutas_archivos = [os.path.join('publicaciones',archivo) for archivo in archivos_directorio]\n",
+        "print(rutas_archivos)\n",
+        "print(type(rutas_archivos))"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "['publicaciones/The Citrus Solution Phase II.txt', 'publicaciones/Yukon Delta Salmon Management.txt', 'publicaciones/Characterization of Iron Deposition in Recombinant Heteropolymer.txt', 'publicaciones/Using GIS Site Suitability Analysis to Study Adaptability.txt']\n",
+            "<class 'list'>\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "mntnGWBbw4FR"
+      },
+      "source": [
+        "Ahora sí, vamos a pedirles que creen una función que reciba una tupla con la ruta y el nombre del archivo. Necesitamos que esta función cuente las palabras que hay en el txt que se encuentra en esa ruta y luego imprima el nombre del archivo y la cantidad. \n",
+        "Después vamos a escribir un for loop que recorra la lista tuplas_archivos y devuelve una tupla con el nombre del archivo y la cantidad de palabras. Desde el loop for vamos a imprimir esa tupla."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "u7r1-1myxOK0"
+      },
+      "source": [
+        "def cuenta_palabras(ruta, archivo):\n",
+        "  with open(ruta, 'r') as f:\n",
+        "    contenido = f.read()\n",
+        "    palabras = contenido.split()  \n",
+        "  return archivo + \" tiene \" + str(len(palabras)) + \" palabras\"\n",
+        "#cant_palabras = cuenta_palabras('publicaciones/The Citrus Solution Phase II.txt','The Citrus Solution Phase II.txt')  "
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "VZDTljqwPABu",
+        "outputId": "b940c470-c1b2-4f1a-a2d9-cc3fb28f071b"
+      },
+      "source": [
+        "tuplas_archivos = [(rutas_archivos [i], archivos_directorio[i]) for i in range(len(archivos_directorio))]\n",
+        "for archivos in tuplas_archivos:  \n",
+        "  print(cuenta_palabras(archivos[0],archivos[1]))                "
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "The Citrus Solution Phase II.txt tiene 518 palabras\n",
+            "Yukon Delta Salmon Management.txt tiene 106 palabras\n",
+            "Characterization of Iron Deposition in Recombinant Heteropolymer.txt tiene 217 palabras\n",
+            "Using GIS Site Suitability Analysis to Study Adaptability.txt tiene 133 palabras\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "V-ral9_OeJp4"
+      },
+      "source": [
+        "Entonces ¿Cuáles superan las 250 palabras? Si quieren ir una milla extra modifiquen la función para que devuelva True si supera y False si no supera en lugar de devolver la cantidad."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "mBxQYMELeFr0"
+      },
+      "source": [
+        "def cuenta_palabras(ruta, archivo):\n",
+        "  with open(ruta, 'r') as f:\n",
+        "    contenido = f.read()\n",
+        "    palabras = contenido.split()  \n",
+        "    if len(palabras) > 250:\n",
+        "      return True\n",
+        "    else:\n",
+        "      pass\n",
+        "#cant_palabras = cuenta_palabras('publicaciones/The Citrus Solution Phase II.txt','The Citrus Solution Phase II.txt')  "
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "-_alADUOef-w",
+        "outputId": "9290077a-514e-4d03-fab4-844b422b3f10"
+      },
+      "source": [
+        "tuplas_archivos = [(rutas_archivos [i], archivos_directorio[i]) for i in range(len(archivos_directorio))]\n",
+        "for archivos in tuplas_archivos:  \n",
+        "  if cuenta_palabras(archivos[0],archivos[1]):\n",
+        "    print(archivos[1])"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "The Citrus Solution Phase II.txt\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "RQPCfvAwhUz1"
+      },
+      "source": [
+        "### Otra solución para el Contador de Palabras"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "kwFj_YQ9jVlr"
+      },
+      "source": [
+        "Ahora vamos a unir estas dos listas del mismo tamaño en una lista de tuplas utilizando la función \"zip\" de Python nativo. Como el zip de Python devuelve un objeto iterable, vamos a convertirlo en lista para trabajar mejor"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "bNl7jWWFhYsc"
+      },
+      "source": [
+        "tuplas_archivos = list(zip(rutas_archivos,archivos_directorio))"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "foOfr2xmhzNe",
+        "outputId": "43170f13-8a3b-43a5-d209-e77f8fd92b1f"
+      },
+      "source": [
+        "for tupla in tuplas_archivos:\n",
+        "    print(tupla)"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "('publicaciones/The Citrus Solution Phase II.txt', 'The Citrus Solution Phase II.txt')\n",
+            "('publicaciones/Yukon Delta Salmon Management.txt', 'Yukon Delta Salmon Management.txt')\n",
+            "('publicaciones/Characterization of Iron Deposition in Recombinant Heteropolymer.txt', 'Characterization of Iron Deposition in Recombinant Heteropolymer.txt')\n",
+            "('publicaciones/Using GIS Site Suitability Analysis to Study Adaptability.txt', 'Using GIS Site Suitability Analysis to Study Adaptability.txt')\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "g-JCL32Lh7m-"
+      },
+      "source": [
+        "# 1. Escribir la función \n",
+        "def contar_palabras(tupla):\n",
+        "    ruta = tupla[0]\n",
+        "    nombre = tupla[1]\n",
+        "    with open(ruta, 'r') as inp:\n",
+        "        string_contenido = inp.read()\n",
+        "    palabras = string_contenido.split(' ')\n",
+        "    cantidad_palabras = len(palabras)\n",
+        "    return (nombre, cantidad_palabras)"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "jfMVzxdOjmgZ",
+        "outputId": "72348b55-66e6-4f59-d8f4-f88fd6dcfa11"
+      },
+      "source": [
+        "# 2. Recorrer en un loop tuplas_archivos invocando a la función\n",
+        "for tupla in tuplas_archivos:\n",
+        "    print(contar_palabras(tupla))"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "('The Citrus Solution Phase II.txt', 519)\n",
+            "('Yukon Delta Salmon Management.txt', 109)\n",
+            "('Characterization of Iron Deposition in Recombinant Heteropolymer.txt', 217)\n",
+            "('Using GIS Site Suitability Analysis to Study Adaptability.txt', 134)\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "2wB2sPDUjw_R"
+      },
+      "source": [
+        "Entonces ¿Cuáles superan las 250 palabras? Si quieren ir una milla extra modifiquen la función para que devuelva True si supera y False si no supera en lugar de devolver la cantidad. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "zkl6Ou8Oj1uz"
+      },
+      "source": [
+        "# 3. Modifiquen la función\n",
+        "def contar_palabras(tupla):\n",
+        "    ruta = tupla[0]\n",
+        "    nombre = tupla[1]\n",
+        "    with open(ruta, 'r') as inp:\n",
+        "        string_contenido = inp.read()\n",
+        "    palabras = string_contenido.split(' ')\n",
+        "    cantidad_palabras = len(palabras)\n",
+        "    supera = False\n",
+        "    if cantidad_palabras > 250:\n",
+        "        supera = True\n",
+        "    return (nombre, supera)"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "gKRITDmbj6FM",
+        "outputId": "a6c74a80-087e-463e-ead9-8d33aee898b1"
+      },
+      "source": [
+        "#4. Vuelvan a llamarla\n",
+        "for tupla in tuplas_archivos:\n",
+        "    print(contar_palabras(tupla))"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "('The Citrus Solution Phase II.txt', True)\n",
+            "('Yukon Delta Salmon Management.txt', False)\n",
+            "('Characterization of Iron Deposition in Recombinant Heteropolymer.txt', False)\n",
+            "('Using GIS Site Suitability Analysis to Study Adaptability.txt', False)\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "-vwPfm-wk5qZ"
+      },
+      "source": [
+        "## Funciones de Test \n",
+        "\n",
+        "Estos ejercicios tienen un nivel de dificultad un poco mas elevado. Cada ejercicio tiene una función de test para chequear si lo que hicieron esta bien. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "ND8wcSAMk-6E",
+        "outputId": "f97d1d5a-ef12-44e5-c0b1-c402d1904dd4"
+      },
+      "source": [
+        "!wget https://datasets-humai.s3.amazonaws.com/datasets/test_intro_clase2.zip\n",
+        "!unzip test_intro_clase2.zip"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "--2021-04-13 19:03:42--  https://datasets-humai.s3.amazonaws.com/datasets/test_intro_clase2.zip\n",
+            "Resolving datasets-humai.s3.amazonaws.com (datasets-humai.s3.amazonaws.com)... 52.217.131.177\n",
+            "Connecting to datasets-humai.s3.amazonaws.com (datasets-humai.s3.amazonaws.com)|52.217.131.177|:443... connected.\n",
+            "HTTP request sent, awaiting response... 200 OK\n",
+            "Length: 3265 (3.2K) [application/zip]\n",
+            "Saving to: ‘test_intro_clase2.zip’\n",
+            "\n",
+            "\rtest_intro_clase2.z   0%[                    ]       0  --.-KB/s               \rtest_intro_clase2.z 100%[===================>]   3.19K  --.-KB/s    in 0s      \n",
+            "\n",
+            "2021-04-13 19:03:42 (140 MB/s) - ‘test_intro_clase2.zip’ saved [3265/3265]\n",
+            "\n",
+            "Archive:  test_intro_clase2.zip\n",
+            "  inflating: README.txt              \n",
+            "   creating: test/\n",
+            "  inflating: test/borges1.txt        \n",
+            "  inflating: test/borges1_encriptado_6.txt  \n",
+            "  inflating: test/borges1_encriptado_6_cap.txt  \n",
+            "  inflating: test/borges2.txt        \n",
+            "  inflating: test/borges2_encriptado_11.txt  \n",
+            "  inflating: test/borges2_encriptado_11_cap.txt  \n",
+            "  inflating: test.py                 \n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "nHYHM5vDlEQV"
+      },
+      "source": [
+        "from test import *"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "5_nE2RbglKTV"
+      },
+      "source": [
+        "## Juego de espías (Fácil)\n",
+        "El espía Ramsay debe codificar los mensajes que le mandan otros espías sobre la cantidad de tropas que tiene el enemigo en distintos cuarteles. Para esto, otro espía le manda una tira de números con un pequeño truco. Esta tira de números estan separados por `-`, pero para que no sea tan fácil saber que esta informando, la cantidad de tropas esta levemente escondida y también esta escondido el número del cuartel. El cuartel estará escondido en el último lugar de la tira y para obtener la cantidad de tropas aproximadas se deben sumar todos los números que son divisibles por el número del cuartel de la tira. Crear una función que reciba el string de la tira de números y devuelva la cantidad de tropas que hay en el cuartel enemigo como una tupla. Adicionalmente, podria imprimir un mensaje con la información requerida.\n",
+        "\n",
+        "Ej:\n",
+        "```Python\n",
+        "INPUT:\n",
+        "tira_numeros = '29-32-1-5-65-12345-0-12-2'\n",
+        "OUTPUT: \n",
+        "(2, 44)\n",
+        "    \"En el cuartel número 2 hay 44 soldados\"\n",
+        "```"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "3b4Nk6YGlJfc",
+        "outputId": "10d53940-167d-4a6c-ced9-d3a3b67dbfaa"
+      },
+      "source": [
+        "def informe_espia(codigo):\n",
+        "  lista = codigo.split('-')\n",
+        "  cuartel = lista[-1]\n",
+        "  cant_soldados = [int(soldados) for soldados in lista[:-1] if int(soldados) % int(cuartel) == 0] \n",
+        "  return(int(cuartel), sum(cant_soldados))\n",
+        "tira_numeros = '29-32-1-5-65-12345-0-12-2'\n",
+        "print(informe_espia(tira_numeros))\n"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "(2, 44)\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "0AE-nrbAlJli",
+        "outputId": "7b5193bf-c9c3-4ed4-f57d-1d284264f1ae"
+      },
+      "source": [
+        "test1(informe_espia)"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Salio todo piola\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "QNrzIRNUmxLh"
+      },
+      "source": [
+        "### Otra solución a Juego de Espías"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "mUsCaSZQmvvh"
+      },
+      "source": [
+        "def informe_espia(tira_numeros):\n",
+        "    numeros = tira_numeros.split('-')\n",
+        "    cuartel = int(numeros[-1])\n",
+        "    informe = 0\n",
+        "    for num in numeros[:-1]:\n",
+        "        if int(num) % cuartel == 0:\n",
+        "            informe += int(num)\n",
+        "            \n",
+        "    print(f\"En el cuartel número {cuartel} hay {informe} soldados\") \n",
+        "    return (cuartel,informe)"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "gvNANHIzn2Rx",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "a7595aef-30e7-4412-de49-edd70ca06614"
+      },
+      "source": [
+        "test1(informe_espia)"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "En el cuartel número 3 hay 1581 soldados\n",
+            "En el cuartel número 5 hay 213455295 soldados\n",
+            "En el cuartel número 1 hay 138467 soldados\n",
+            "En el cuartel número 2 hay 0 soldados\n",
+            "Salio todo piola\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "C3XokRnImwJB"
+      },
+      "source": [
+        "***\n",
+        "## Codificador César (Intermedio)\n",
+        "Una de las formas mas antiguas de crear un código encriptado es lo que se conoce como el encriptado César <https://es.wikipedia.org/wiki/Cifrado_C%C3%A9sar>. En este tipo de encriptado lo que se hace es \"girar\" el abecedario una determinada cantidad de pasos según una clave numérica (ver ejemplo). Crear una función que lea un string dentro de un txt en la misma ruta que esta notebook, tome una clave y devuelva el string encriptado con la clave César en minúsculas(asumir que el texto esta en castellano).\n",
+        "\n",
+        "Ej: Clave = 2\n",
+        "\n",
+        "| Letra   | Letra encriptada |\n",
+        "| ------------- |:-------------:| \n",
+        "| A | C | \n",
+        "| B | D |\n",
+        "| C | E |\n",
+        "| ... | ... |\n",
+        "| Y | A |\n",
+        "| Z | B |\n",
+        "\n",
+        "```Python\n",
+        "INPUT:\n",
+        "'mi_archivo.txt' (\"Hola estudiante\"), clave = 1\n",
+        "OUTPUT:\n",
+        "\"Jqnc guvwfkcovg\"\n",
+        "```\n",
+        "\n",
+        "*AYUDA*\n",
+        "\n",
+        "El método `mi_lista.index(elemento)` búsca el `elemento` en la lista `mi_lista` y devuelve la posición del elemento si lo encontró. Si no lo encontró devuelve un `ValueError`."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "BVwTpFIqpSty",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 35
+        },
+        "outputId": "79ee15f7-b5c9-4ec5-bca2-d532f7b9e9ad"
+      },
+      "source": [
+        "def codificador_cesar(archivo, clave):\n",
+        "  with open(archivo, 'r') as f:\n",
+        "    texto = f.read()    \n",
+        "  cadena = ''\n",
+        "  alfabeto = 'abcdefghijklmnñopqrstuvwxyz'\n",
+        "  for indice in range(len(texto)):    \n",
+        "    if texto[indice].lower() in alfabeto:      \n",
+        "      pos_alfa = alfabeto.index(texto[indice].lower())   \n",
+        "      if pos_alfa + (clave) > len(alfabeto)-1:\n",
+        "        indice_clave = (pos_alfa + clave) - len(alfabeto) \n",
+        "      else: \n",
+        "        indice_clave = pos_alfa + clave\n",
+        "      # Verifico Mayusculas\n",
+        "      if texto[indice].lower() == texto[indice]:\n",
+        "        caracter_codificado = alfabeto[indice_clave]\n",
+        "      else:\n",
+        "        caracter_codificado = alfabeto[indice_clave].upper()  \n",
+        "    else:\n",
+        "      caracter_codificado = texto[indice]  \n",
+        "    cadena += caracter_codificado\n",
+        "  return cadena\n",
+        "\n",
+        "codificador_cesar(\"borges1.txt\", 6)"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "string"
+            },
+            "text/plain": [
+              "'Eu su nghqu jk bksmgsfgy sñ vkxjusky, kq uqbñju ky qg asñig bksmgsfg e kq asñiu vkxjus.'"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 141
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "PeBn5ttIn_7w",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "ef8ea7ad-24d8-4c2f-82a1-e7b5e7b27386"
+      },
+      "source": [
+        "test2_mayusculas(codificador_cesar)"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "¡Mensaje encriptado correctamente! Son hackers.\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "dki79duioLRQ"
+      },
+      "source": [
+        "### Otra solución a Codificador César (Minúsculas)\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "nuUwCIJmoPnP"
+      },
+      "source": [
+        "def codificador_cesar(mensaje_path, clave):\n",
+        "    # Un ayudin\n",
+        "    abecedario = 'abcdefghijklmnñopqrstuvwxyz'\n",
+        "    # Ahora hagan su magia (ojo con las mayúsculas)\n",
+        "    # Llamamos a upper para obtener sólo minúsculas\n",
+        "    with open(mensaje_path, 'r') as f:\n",
+        "        contenido = f.read().lower()\n",
+        "        # Variable para guardar mensaje cifrado\n",
+        "        cifrado = \"\"\n",
+        "        for l in contenido:\n",
+        "            # Si la letra está en el abecedario se reemplaza\n",
+        "            if l in abecedario:\n",
+        "                pos_letra = abecedario.index(l)\n",
+        "                # Sumamos para movernos a la derecha del abc\n",
+        "                nueva_pos = (pos_letra + clave) % len(abecedario)\n",
+        "                cifrado+= abecedario[nueva_pos]\n",
+        "            else:\n",
+        "                # Si no está en el abecedario sólo añadelo\n",
+        "                cifrado+= l\n",
+        "    #print(cifrado)\n",
+        "    return cifrado"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "2YZuEC7zoUI6",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "91cc63c0-9272-420c-df0b-f697cedfbef3"
+      },
+      "source": [
+        "test2(codificador_cesar)"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "¡Mensaje encriptado correctamente! Son hackers.\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "4sz9uIrEptfz"
+      },
+      "source": [
+        "## La calesita (Rompecoco) \n",
+        "El señor Jacinto es dueño de una antigua calesita con animalitos que no funciona hace varios años y quiere volver a ponerla en funcionamiento. Para eso va a probarla prendiendola y viendo cuanto rota segun la cantidad de movimientos. \n",
+        "\n",
+        "Crear una función que reciba una lista de strings (con la primera en mayúscula) con los animales que componen la calesita, una cantidad de ciclos(n_ciclos) y devuelva la misma lista pero rotada hacia la derecha esa cantidad de movimientos, donde un movimiento es cambiar todos los animales una posición hacia la derecha:\n",
+        "\n",
+        "Ej:\n",
+        "``` Python\n",
+        "INPUT:\n",
+        "['Unicornio','Oso','Jirafa', 'Pato'. 'Elefante'], movimiento = 1\n",
+        "OUTPUT:\n",
+        "['Elefante', 'Unicornio', 'Oso', 'Jirafa', 'Pato']\n",
+        "```"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "jkOPwh2fpyTv"
+      },
+      "source": [
+        "def probar_calesita(calesita, n_movimientos):\n",
+        "    # Proba la calesita\n",
+        "    # Primero calculamos el resto de la division de los ciclos por el tamaño de la calesita\n",
+        "    # Porque si por ejemplo da tantos ciclos como tamaño tiene, entonces la calesita no cambia asi omitimos dar vueltas de mas\n",
+        "    movimientos = n_movimientos % len(calesita)\n",
+        "    #print(movimientos)\n",
+        "    # Ahora posicion primero me dice donde va a ir a parar el primer animalito y asi sucesivamente.\n",
+        "    # Separamos en el caso de que si se mueva la calesita\n",
+        "    if movimientos > 0:\n",
+        "        # Movemos los ultimos elementos al principio de la lista\n",
+        "        adelante = calesita[len(calesita)-movimientos:]\n",
+        "        atras    = calesita[:-movimientos]\n",
+        "        #print(adelante)\n",
+        "        #print(atras)\n",
+        "        calesita_girada = adelante + atras\n",
+        "    else:\n",
+        "        calesita_girada = calesita\n",
+        "    \n",
+        "    return calesita_girada"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "J0t3iz69p3fh",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "bdb93fea-4657-48b0-ae99-b15f27c1f9e6"
+      },
+      "source": [
+        "#test3(probar_calesita)\n",
+        "probar_calesita(['Gatito','Ornitorrinco','Vaca','Elefante','Pato'],3)"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "['Vaca', 'Elefante', 'Pato', 'Gatito', 'Ornitorrinco']"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 164
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "t_gckD4CqxJT"
+      },
+      "source": [
+        "Cuando prueba la calesita se da cuenta que es muy lenta. Debe sacar uno de los animales para que pueda funcionar correctamente. Para eso los manda a pesar y le dicen cual es el que hay que sacar para que funcione perfectamente.\n",
+        "\n",
+        "Modificar la función anterior para que reciba un string, que es un animal en MAYÚSCULAS (animal_quitar) para sacar y pruebe la función nuevamente.\n",
+        "\n",
+        "Ej:\n",
+        "```Python\n",
+        "INPUT:\n",
+        "['Unicornio','Oso','Jirafa', 'Pato'. 'Elefante'], animal_quitar = 'JIRAFA', movimientos = 1\n",
+        "OUTPUT:\n",
+        "['Elefante', 'Unicornio', 'Oso', 'Pato']\n",
+        "```"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "EswMmZC7q2OA"
+      },
+      "source": [
+        "def probar_calesita_arreglada(calesita, n_mov, animal_quitar):\n",
+        "    animal = animal_quitar.lower().title()\n",
+        "    indice = calesita.index(animal)\n",
+        "    nueva_calesita = calesita[:indice]+calesita[indice+1:]\n",
+        "    return probar_calesita(nueva_calesita, n_mov)"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "l3RNjGFmq5Sd",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "852f424f-ca40-44e3-e83a-a40f82ff2c00"
+      },
+      "source": [
+        "#test4(probar_calesita_arreglada)\n",
+        "probar_calesita_arreglada(['Gatito','Ornitorrinco','Vaca','Elefante','Pato'],11, 'Gatito')"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "['Vaca', 'Elefante', 'Pato', 'Ornitorrinco']"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 167
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "SWXiUHgXrKf0"
+      },
+      "source": [
+        "# Clase 3 - Algoritmos"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "jLnntjA0rVyH"
+      },
+      "source": [
+        "## Factoriales\n",
+        "\n",
+        "Factorial de 5 es igual a $5*4*3*2*1$, es decir, 120."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "MqceVPG5rM5m"
+      },
+      "source": [
+        "# Solución recursiva. \n",
+        "def factorial(x):\n",
+        "    if x == 1:\n",
+        "        return 1\n",
+        "    else:\n",
+        "        return x*factorial(x-1)"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "6foyjLwSri2E"
+      },
+      "source": [
+        "# Solución iterativa. \n",
+        "def factorial(x):\n",
+        "    resultado = 1\n",
+        "    for i in range(1, x+1):\n",
+        "        resultado = resultado * (i)\n",
+        "    return resultado"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "4EgA9Rvhrnc1"
+      },
+      "source": [
+        "Construya un módulo que se llame \"operaciones\" con cualquiera de las dos versiones de la función y luego invoquen a la función factorial del módulo."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "326tY2gcrM6z"
+      },
+      "source": [
+        "# Escriban el archivo operaciones.py\n",
+        "with open('operaciones.py', 'w') as out:\n",
+        "    out.write(\"\"\"def factorial(x):\n",
+        "    resultado = 1\n",
+        "    for i in range(1, x+1):\n",
+        "        resultado = resultado * (i)\n",
+        "    return resultado\"\"\")"
+      ],
+      "execution_count": 1,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "o_1xTP7ksIKc"
+      },
+      "source": [
+        "# Importen operaciones\n",
+        "import operaciones"
+      ],
+      "execution_count": 3,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "vKB4ZV14sN-d",
+        "outputId": "b7ff9dce-dcae-48f2-c10b-ca882d128760"
+      },
+      "source": [
+        "# Invoquen con cualquier valor a operaciones.factorial()\n",
+        "operaciones.factorial(5)"
+      ],
+      "execution_count": 5,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "120"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 5
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "2A5dpHid2wxK"
+      },
+      "source": [
+        "# Clase 4 - Introducción a POO"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "BwNWNf5e2sjF"
+      },
+      "source": [
+        "## Carrito de compras\n",
+        "\n",
+        "Para esto vamos a escribir dos clases: Carrito e Item.\n",
+        "\n",
+        "El ítem va a tener como propiedades un nombre, un precio y una url de la imágen que lo representa. Por default, la url se inicializa en blanco.\n",
+        "\n",
+        "El Carrito tiene como propiedad una lista de diccionarios, la variable _lineas. \n",
+        "\n",
+        "Los carritos se inicializan vacíos y luego se agregan líneas utilizando el método agregar_línea(). Cada línea es un diccionario con dos claves: \"ítem\" que contiene un objeto de tipo ítem y \"cantidad\" según la cantidad que queremos agregar al carrito.\n",
+        "\n",
+        "Por último los carritos tienen un método get_total() que devuelve la suma de los precios de los ítems, multiplicados por las cantidades que hay en cada línea."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "0q2LSUd625tK"
+      },
+      "source": [
+        "class Item:\n",
+        "  def __init__(self, nombre, precio, url=''):\n",
+        "    self.nombre = precio\n",
+        "    self.precio = nombre\n",
+        "    self.url = url"
+      ],
+      "execution_count": 1,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "APukKkpAF53t"
+      },
+      "source": [
+        "# Crear los ítems banana de $49.5 y yoghurt de $32.5\n",
+        "banana = Item(\"banana\",49.5)\n",
+        "yoghurt = Item(\"yoghurt\",32.5)"
+      ],
+      "execution_count": 2,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "z7jjkD5AGspb"
+      },
+      "source": [
+        "class Carrito:\n",
+        "  def __init__(self):\n",
+        "        \"\"\" \n",
+        "        El Carrito siempre se inicializa con una lista de Ítems.\n",
+        "        En el carrito la única propiedad es privada. \n",
+        "        \"\"\"\n",
+        "        self._lineas = []    \n",
+        "\n",
+        "  def get_total(self):\n",
+        "    total = 0\n",
+        "    for linea in self._lineas:      \n",
+        "      total = total + (linea['cantidad'] * linea['item'].precio)\n",
+        "    return total\n",
+        "            \n",
+        "  def agregar_item(self,linea):\n",
+        "    self._lineas.append(linea)      "
+      ],
+      "execution_count": 4,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "YPjOxVG6Hzgl"
+      },
+      "source": [
+        "Ahora vamos a instanciar el carrito y agregarle una \"línea\" con dos bananas y otra con tres yoghures."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "vMN1bZB6H1fD"
+      },
+      "source": [
+        "# Instancias el carrito\n",
+        "carrito = Carrito()"
+      ],
+      "execution_count": 5,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "YzpnqkPXH41r"
+      },
+      "source": [
+        "# Agregar bananas\n",
+        "carrito.agregar_item( {'item':banana,'cantidad':2} )"
+      ],
+      "execution_count": 6,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "vOQ6ULwwH7zk"
+      },
+      "source": [
+        "# Agregar yoghures\n",
+        "carrito.agregar_item({'item':yoghurt,'cantidad':3})"
+      ],
+      "execution_count": 7,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "nF03vQIMH-Ht",
+        "outputId": "aa750ae9-b9b7-46d7-b083-3c095b84ede1",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 299
+        }
+      },
+      "source": [
+        "# Obtener el total\n",
+        "carrito.get_total()"
+      ],
+      "execution_count": 8,
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "TypeError",
+          "evalue": "ignored",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mTypeError\u001b[0m                                 Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-8-d5a1313aaaae>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m()\u001b[0m\n\u001b[1;32m      1\u001b[0m \u001b[0;31m# Obtener el total\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 2\u001b[0;31m \u001b[0mcarrito\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mget_total\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+            "\u001b[0;32m<ipython-input-4-da88ec4ab018>\u001b[0m in \u001b[0;36mget_total\u001b[0;34m(self)\u001b[0m\n\u001b[1;32m     10\u001b[0m     \u001b[0mtotal\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;36m0\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     11\u001b[0m     \u001b[0;32mfor\u001b[0m \u001b[0mlinea\u001b[0m \u001b[0;32min\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m_lineas\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m---> 12\u001b[0;31m       \u001b[0mtotal\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mtotal\u001b[0m \u001b[0;34m+\u001b[0m \u001b[0;34m(\u001b[0m\u001b[0mlinea\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m'cantidad'\u001b[0m\u001b[0;34m]\u001b[0m \u001b[0;34m*\u001b[0m \u001b[0mlinea\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m'item'\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mprecio\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m     13\u001b[0m     \u001b[0;32mreturn\u001b[0m \u001b[0mtotal\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     14\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;31mTypeError\u001b[0m: unsupported operand type(s) for +: 'int' and 'str'"
+          ]
+        }
+      ]
+    }
+  ]
+}
